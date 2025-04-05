@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colloquium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        
+        .nav-links {
+            display: none;
+        } 
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #D81F26;
+        }
+
+        .register-btn {
+            background-color: #D81F26;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+         .main-container {
+            padding-top: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 2rem;
+        }
+
+          .title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #D81F26;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #ffffff80;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .countdown-digits {
+            display: flex;
+            gap: 4px;
+        }
+
+        .digit {
+            background: linear-gradient(180deg, #D81F26 0%, #D81F26 50%, #000000 100%);
+            width: clamp(30px, 8vw, 40px);
+            height: clamp(45px, 12vw, 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-family: 'Digital', monospace;
+            color: white;
+            border-radius: 4px;
+            position: relative;
+        }
+
+         .countdown-label {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            color: white;
+        }
+
+        .events {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .events {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .event-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .event-item:hover {
+            transform: scale(1.5);
+        }
+
+        .event-icon {
+            font-size: 2rem;
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .event-label {
+            font-size: 0.9rem;
+            color: #ffffff80;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 1rem;
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ISTE%20Thapar%20Chapter%20Logo%20white-zcb6Zxv4b5orvjstRCtfb2i8Hk0v41.png" alt="ISTE Logo" style="height: 45px; width: auto;" />
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#team">Our Team</a>
+            <a href="#about">About</a>
+            <a href="#sponsors">Sponsors</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="register-btn">Register</button>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <div class="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#team">Our Team</a>
+        <a href="#about">About</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="main-container">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-01-31%20at%2015.31.40_c764df52.jpg-tdNhTENsySmPOptYvOVr22CI05qYUC.jpeg" alt="ISTE Colloquium Group" class="hero-image" />
+        
+        <div class="content">
+            <h1 class="title">COLLOQUIUM</h1>
+            <p class="date">DD/MM/YYYY</p>
+            <button class="register-btn">Register</button>
+
+            <div class="countdown">
+                <div class="countdown-group">
+                    <div class="countdown-digits">
+                        <div class="digit" id="days-1">2</div>
+                        <div class="digit" id="days-2">0</div>
+                    </div>
+                    <div class="countdown-label">DAYS</div>
+                </div>
+
+                <div class="countdown-group">
+                    <div class="countdown-digits">
+                        <div class="digit" id="hours-1">2</div>
+                        <div class="digit" id="hours-2">2</div>
+                    </div>
+                    <div class="countdown-label">HOURS</div>
+                </div>
+
+                <div class="countdown-group">
+                    <div class="countdown-digits">
+                        <div class="digit" id="minutes-1">5</div>
+                        <div class="digit" id="minutes-2">6</div>
+                    </div>
+                    <div class="countdown-label">MINUTES</div>
+                </div>
+            </div>
+
+            <div class="events">
+                <a href="#event1" class="event-item">
+                    <div class="event-icon">🪓</div>
+                    <div class="event-label">Event 1</div>
+                </a>
+                <a href="#event2" class="event-item">
+                    <div class="event-icon">G</div>
+                    <div class="event-label">Event 2</div>
+                </a>
+                <a href="#event3" class="event-item">
+                    <div class="event-icon">🎨</div>
+                    <div class="event-label">Event 3</div>
+                </a>
+                <a href="#event4" class="event-item">
+                    <div class="event-icon">&lt;/&gt;</div>
+                    <div class="event-label">Event 4</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        function updateCountdown() {
+            const targetDate = new Date('2025-2-17').getTime();
+            
+            function update() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+                document.getElementById('days-1').textContent = String(days).padStart(2, '0')[0];
+                document.getElementById('days-2').textContent = String(days).padStart(2, '0')[1];
+                document.getElementById('hours-1').textContent = String(hours).padStart(2, '0')[0];
+                document.getElementById('hours-2').textContent = String(hours).padStart(2, '0')[1];
+                document.getElementById('minutes-1').textContent = String(minutes).padStart(2, '0')[0];
+                document.getElementById('minutes-2').textContent = String(minutes).padStart(2, '0')[1];
+
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    ['days-1', 'days-2', 'hours-1', 'hours-2', 'minutes-1', 'minutes-2'].forEach(id => {
+                        document.getElementById(id).textContent = '0';
+                    });
+                }
+            }
+
+            update();
+            const countdownTimer = setInterval(update, 1000);
+        }
+
+        updateCountdown();
+    </script>
+</body>
+</html>
+

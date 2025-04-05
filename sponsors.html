@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Sponsors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+         body {
+            background-color: black;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #D81F26;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            flex-grow: 1;
+        }
+
+        .sponsor {
+            background-color: white;
+            aspect-ratio: 1 ;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .sponsor:hover {
+            transform: scale(1.05);
+        }
+
+        .sponsor p {
+            margin: 0;
+            text-align: center;
+            color: #666;
+        }
+
+        .sponsor .business {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .sponsor .logo {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .title {
+                font-size: 6rem;
+            }
+            .sponsors-grid {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .title {
+                font-size: 5rem;
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+            .title {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">OUR SPONSORS</h1>
+        <div class="sponsors-grid">
+            <div class="sponsor">
+                <p class="logo">LOGO</p>
+            </div>
+            <div class="sponsor">
+                <p class="logo">LOGO</p>
+            </div>
+            <div class="sponsor">
+                <p class="logo">LOGO</p>
+            </div>
+            <div class="sponsor">
+                <p class="logo">LOGO</p>
+            </div>
+            <div class="sponsor">
+                <p class="logo">LOGO</p>
+            </div>
+            <div class="sponsor">
+                <p class="logo">LOGO</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
